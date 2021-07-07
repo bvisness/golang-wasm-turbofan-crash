@@ -25,11 +25,13 @@
     </ul>
 
     <script>
-        setInterval(() => {
-            document.querySelector('#heapsizelimit').innerText = performance.memory.jsHeapSizeLimit;
-            document.querySelector('#totalheapsize').innerText = performance.memory.totalJSHeapSize;
-            document.querySelector('#usedheapsize').innerText = performance.memory.usedJSHeapSize;
-        }, 1000);
+        if (performance.memory) {
+            setInterval(() => {
+                document.querySelector('#heapsizelimit').innerText = performance.memory.jsHeapSizeLimit;
+                document.querySelector('#totalheapsize').innerText = performance.memory.totalJSHeapSize;
+                document.querySelector('#usedheapsize').innerText = performance.memory.usedJSHeapSize;
+            }, 1000);
+        }
     </script>
 </body>
 
