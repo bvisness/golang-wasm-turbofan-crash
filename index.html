@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Golang WASM TurboFan Crash</title>
+
+    <script src="wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
+</head>
+
+<body>
+    <p>Hi. This page is interactive, for now. But soon it will crash. Just you wait.</p>
+    <p>Here are some memory stats from JS, just to prove that it's not JS memory that's going crazy.</p>
+    <ul>
+        <li>Heap size limit: <span id="heapsizelimit"></span></li>
+        <li>Total heap size: <span id="totalheapsize"></span></li>
+        <li>Used heap size: <span id="usedheapsize"></span></li>
+    </ul>
+
+    <script>
+        setInterval(() => {
+            document.querySelector('#heapsizelimit').innerText = performance.memory.jsHeapSizeLimit;
+            document.querySelector('#totalheapsize').innerText = performance.memory.totalJSHeapSize;
+            document.querySelector('#usedheapsize').innerText = performance.memory.usedJSHeapSize;
+        }, 1000);
+    </script>
+</body>
+
+</html>
