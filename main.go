@@ -4,9 +4,6 @@ import "fmt"
 
 func main() {
 	fmt.Println("WASM is up and running!")
-
-	var done chan bool
-	<-done
 }
 
 type HTML5Entity struct {
