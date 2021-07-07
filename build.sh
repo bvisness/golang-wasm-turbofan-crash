@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/bin/bash
 
 GOOS=js GOARCH=wasm go build -o main.wasm main.go
