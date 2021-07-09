@@ -1,3 +1,3 @@
 #!/bin/sh
 
-go run server.go
+python3 -m http.server 8989

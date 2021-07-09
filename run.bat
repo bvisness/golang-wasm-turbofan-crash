@@ -1,6 +1,6 @@
 @echo off
 setlocal
 
-go run server.go
+python3 -m http.server 8989
 
 endlocal
